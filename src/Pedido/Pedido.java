@@ -113,11 +113,21 @@ public class Pedido {
             throw new IllegalArgumentException("Produto não encontrado no pedido.");
     }
 
-    public void calcularTotal(){
+    public double calcularTotal(){
         double total = 0.0;
         for (ItemPedido item : itens){
-           valorTotal += item.calcularSubtotal();
+           total += item.calcularSubtotal();
         }
+        valorTotal = total;
+        return total;
+    }
+
+    public double aplicarDesconto(){
+        double totalComDesconto = calcularTotal();
+        if (desconto != null){
+        totalComDesconto -= desconto.calcularDesconto(totalComDesconto);
+        }
+        return totalComDesconto;
     }
 
     public boolean podeFinalizar(){

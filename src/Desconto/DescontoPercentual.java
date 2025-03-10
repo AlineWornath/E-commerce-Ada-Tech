@@ -11,8 +11,8 @@ public class DescontoPercentual implements Desconto{
     }
 
     @Override
-    public double aplicarDesconto(double valorPedido) {
-        return valorPedido - (valorPedido * valorDesconto / 100);
+    public double calcularDesconto(double valorPedido) {
+        return valorPedido * (valorDesconto / 100);
     }
 
     @Override

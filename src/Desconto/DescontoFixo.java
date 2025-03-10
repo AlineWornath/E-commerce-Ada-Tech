@@ -8,8 +8,8 @@ public class DescontoFixo implements Desconto {
     }
 
     @Override
-    public double aplicarDesconto(double valor) {
-        return Math.max(0, valor - valorDesconto);
+    public double calcularDesconto(double valor) {
+        return Math.max(0, valorDesconto);
     }
 
     @Override

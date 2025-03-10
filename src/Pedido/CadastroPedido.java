@@ -19,7 +19,6 @@ public class CadastroPedido {
     private BancoDeDadosClientes bancoDeDadosClientes = BancoDeDadosClientes.getInstancia();
     private BancoDeDadosPedidos bancoDeDadosPedidos = BancoDeDadosPedidos.getInstancia();
     private BancoDeDadosProdutos bancoDeDadosProdutos = BancoDeDadosProdutos.getInstancia();
-    private PedidoService pedidoService = new PedidoService();
     private List<Desconto> descontosDisponiveis = new ArrayList<>();
 
     public CadastroPedido() {
@@ -107,7 +106,7 @@ public class CadastroPedido {
         if (indiceDesconto >= 0 && indiceDesconto < descontosDisponiveis.size()) {
             Desconto descontoEscolhido = descontosDisponiveis.get(indiceDesconto);
             pedido.setDesconto(descontoEscolhido);
-            pedidoService.aplicarDesconto(pedido, descontoEscolhido);
+            pedido.aplicarDesconto();
         } else {
             System.out.println("Opção inválida.");
         }

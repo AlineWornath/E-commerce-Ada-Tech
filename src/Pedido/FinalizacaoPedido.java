@@ -2,12 +2,10 @@ package Pedido;
 
 import Frete.CalculadoraFrete;
 import BancoDeDados.BancoDeDadosPedidos;
-import Pedido.PedidoService;
 
 public class FinalizacaoPedido {
     private BancoDeDadosPedidos bancoDeDadosPedidos;
     private CalculadoraFrete calculadoraFrete;
-    private PedidoService pedidoService = new PedidoService();
 
     public FinalizacaoPedido(CalculadoraFrete calculadoraFrete) {
         this.bancoDeDadosPedidos = BancoDeDadosPedidos.getInstancia();
@@ -18,7 +16,7 @@ public class FinalizacaoPedido {
         try {
             if (pedido.podeFinalizar()) {
                 double frete = calculadoraFrete.calcularFrete(CalculadoraFrete.REMETENTE, pedido.getCliente());
-                double valorComDesconto = pedidoService.aplicarDesconto(pedido, pedido.getDesconto());
+                double valorComDesconto = pedido.aplicarDesconto();
                 pedido.alterarStatus(StatusPedido.AGUARDANDO_PAGAMENTO);
                 pedido.enviarNotificacao(pedido.getCliente(), "Pedido aguardando pagamento. Total: R$ " + String.format("%.2f", valorComDesconto + frete));
                 bancoDeDadosPedidos.salvar(pedido);

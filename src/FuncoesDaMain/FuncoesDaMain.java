@@ -233,7 +233,7 @@ public class FuncoesDaMain {
                     scanner.nextLine();
                     pedido = buscarPedidoPorId(idPedido);
                     if (pedido != null) {
-                        System.out.println("Escolha o produto a ser removido: ");
+                        System.out.println("Escolha um produto para alterar quantidade: ");
                         bancoDeDadosPedidos.imprimirItensDoPedido(pedido);
                         System.out.println("Digite o ID do produto: ");
                         idProduto = scanner.nextInt();

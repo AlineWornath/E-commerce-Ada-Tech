@@ -1,7 +1,7 @@
 package Desconto;
 
 public interface Desconto {
-    double aplicarDesconto(double valor);
+    double calcularDesconto(double valor);
 
     @Override
     String toString();
